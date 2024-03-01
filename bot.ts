@@ -7,12 +7,30 @@ const bot = new Bot(""); // <-- put your bot token between the ""
 // grammY will call the listeners when users send messages to your bot.
 
 // Handle the /start command.
-bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
+bot.command("start", (ctx) => {
+    ctx.reply("Welcome! Up and running.")
+});
+
 // Handle other messages.
-bot.on("message", (ctx) => ctx.reply("Got another message!"));
+bot.on("message", (ctx) => {
+    ctx.reply("Got another message!")
+    ctx.react("👍")
+});
+
+bot.on("message_reaction", async (ctx) => {
+    const reaction = ctx.messageReaction;
+    // We only receive the message identifier, not the message content.
+    const message = reaction.message_id;
+    // The difference between these two lists describes the change.
+    const old = reaction.old_reaction; // previous
+    const now = reaction.new_reaction; // current
+    console.log("now" + now)
+});
 
 // Now that you specified how to handle messages, you can start your bot.
 // This will connect to the Telegram servers and wait for messages.
 
 // Start the bot.
-bot.start();
+bot.start({
+    allowed_updates: ["message", "message_reaction", "message_reaction_count"],
+});
