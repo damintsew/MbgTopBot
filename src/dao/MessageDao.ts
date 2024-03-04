@@ -2,13 +2,14 @@ import {DataSource} from "typeorm";
 import {MessageEntity} from "../entities/MessageEntity";
 import {ChatEntity} from "../entities/ChatEntity";
 
+//todo move to different place
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "postgres",
-    database: "mbg_top",
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT),
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     synchronize: true,
     logging: true,
     entities: [MessageEntity, ChatEntity],

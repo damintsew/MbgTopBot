@@ -20,6 +20,7 @@
     "compile": "tsc",
     "fix": "gts fix",
     "posttest": "npm run lint",
-    "start": "export DEBUG=\"grammy*\";  tsc && node dist/bot.js"
+    "start": "export DEBUG=\"grammy*\";  tsc && node dist/bot.js",
+    "start-dev": "export DEBUG=\"grammy*\";  tsc && node --env-file=.env-local dist/bot.js"
   }
 }
