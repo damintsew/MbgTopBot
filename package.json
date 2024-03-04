@@ -1,8 +1,11 @@
 {
   "name": "MbgTopBot",
   "version": "2.2.8",
+  "type": "es2022",
   "dependencies": {
     "grammy": "^1.21.1",
+    "pg": "^8.11.3",
+    "typeorm": "^0.3.20",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
